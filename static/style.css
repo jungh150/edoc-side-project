@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -6,19 +6,19 @@
     padding: 8px 12px;
 }
 
-body{
+body {
     margin: 0;
     background-color: var(--backgroud-color);
 }
 
-.navbar__logo{
+.navbar__logo {
     color: white;
     padding-left: 0;
 }
 
-a{
+a {
     text-decoration: none;
-    color: var(--text-color);
+    color: white;
 }
 
 .navbar__menu {
@@ -29,6 +29,18 @@ a{
     align-items: right; 
   }
   
-  .navbar__menu li {
+.navbar__menu li {
     padding: 8px 30px;
+}
+
+.navbar__login {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding-left: 0; 
+    align-items: right; 
   }
+  
+.navbar__login li {
+    padding: 8px 30px;
+}
