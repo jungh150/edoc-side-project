@@ -1,38 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-  <link rel="stylesheet" type="text/css" href="/static/style.css" id="style-css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Random Number Picker</title>
 </head>
 
+
 <body>
-  <nav class="navbar">
-    <div class="navbar__logo">
-      <a href="/">EDOC</a>
-    </div>
-    <ul class="navbar__menu">
-      <li><a href="/">푼 문제 등록</a></li>
-      <li><a href="/">복습 문제 뽑기</a></li>
-      <!-- {% if session['id'] %}
-      <li><a href="/my_page/{{session['id']}}/" id="nav-mypage">{{session['id']}}님</a></li>
-      <li><a href="/logout" id="nav-logout">로그아웃</a></li>
-      {% else %}
-      <li><a href="/login" id="nav-login">로그인</a></li>
-      <li><a href="/signup" id="nav-signup">회원가입</a></li>
-      {% endif %} -->
-    </ul>
-    <ul class="navbar__login">
-      <li><a href="/login">로그인</a></li>
-    </ul>
-  </nav>
-  <section>
-    {% block section %}
+    <nav class="navbar">
 
-    {% endblock section %}
-  </section>
+        <div class="naverbar_logo">
+            <a href="" style="color: white;"><b>백준 문제 복습</b></a>
+        </div>
+
+        <ul class="navbar__menu">
+            <li><a href="#" style="color: white;">문제 추가</a></li>
+            <li><a href="#" style="color: white;">문제 뽑기</a></li>
+            <li><a href="#" style="color: white;">문제 관리</a></li>
+        </ul>
+
+        <a href="#" class="navbar_toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+    
+    <form action="#" method="post">
+        <center>
+        <h3>푼 문제 추가</h3>
+        <label for="add_correct_num">맞춘 문제</label>
+        <br>
+        <input type="text" id="add_correct_num" name="add_correct_num" style="width: 50px;">
+        번 <button type="submit">등록</button>
+
+        <br><br>
+
+        <label for="add_wrong_num">틀린 문제</label>
+        <br>
+        <input type="text" id="add_wrong_num" name="add_wrong_num" style="width: 50px;">
+        번 <button type="submit">등록</button>
+        </center>
+    </form>
+
+    <br><hr>
+    
+    <form action="/result" method="post">
+        <center>
+        <h3>푼 문제 초기화</h3>
+        <label for="correct_numbers"><b>맞춘 문제 입력</b></label>
+        <br>
+        <textarea id="correct_numbers" name="correct_numbers" style="width:300px;height:100px;font-size:px;" required></textarea>
+
+        <br>
+        <br>
+        
+        <label for="wrong_numbers"><b>틀린 문제 입력</b></label>
+        <br>
+        <textarea id="wrong_numbers" name="wrong_numbers" style="width:300px;height:100px;font-size:px;" required></textarea>
+        <br><br>
+        <button type="submit" style="width:100px;height:px;font-size:20px;" >초기화</button>
+        </center>
+    </form>
 </body>
-
 </html>
