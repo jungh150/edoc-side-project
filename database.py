@@ -12,11 +12,15 @@ class DBhandler:
     # 회원가입
     def insert_user(self, data, pw):
         user_info = {
-            "pw": pw,
-            "nickname": data['nickname']
+            "pw": pw
+        }
+        quiz_numbers = {
+            "correct" : "",
+            "wrong" : ""
         }
         if self.user_duplicate_check(str(data['id'])):
             self.db.child("users").child(data['id']).child("user_info").set(user_info)
+            self.db.child("users").child(data['id']).child("quiz_numbers").set(quiz_numbers)
             return True
         else:
             return False
@@ -44,3 +48,26 @@ class DBhandler:
                 else:
                     return False
         return False
+    
+    # 맞은 문제 가져오기
+    def get_correct(self, id) :
+        data = self.db.child("users").child(id).child("quiz_numbers").get().val().get('correct')
+        return data
+
+    # 틀린 문제 가져오기
+    def get_wrong(self, id) :
+        data = self.db.child("users").child(id).child("quiz_numbers").get().val().get('wrong')
+        return data
+
+    # 문제 초기화
+    def init_quiz(self, id, correct, wrong):
+        if correct == "None":
+            correct =  ""
+        if wrong == "None":
+            wrong =  ""
+        quiz_numbers = {
+            "correct" : correct, 
+            "wrong" : wrong
+        }
+        self.db.child("users").child(id).child("quiz_numbers").set(quiz_numbers)
+        return True
