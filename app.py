@@ -59,6 +59,48 @@ def register_user():
 def add_quiz():
     return render_template("add_quiz.html")
 
+# 맞은 문제 추가 정보 넘기기
+@application.route("/add_correct_result", methods=['POST'])
+def add_correct_result():
+    add = set(request.form['add_correct_num'].split())
+    correct = str(DB.get_correct(session['id']))
+    if correct:
+        correct = set(correct.split())
+    else:
+        correct = set({})
+    wrong = str(DB.get_wrong(session['id']))
+    if wrong:
+        wrong = set(wrong.split())
+    else:
+        wrong = set({})
+    correct = correct.union(add)
+    wrong = wrong.difference(correct)
+    new_correct = " ".join(correct)
+    new_wrong = " ".join(wrong)
+    DB.init_quiz(session['id'], new_correct, new_wrong)
+    return redirect(url_for('add_quiz'))
+
+# 틀린 문제 추가 정보 넘기기
+@application.route("/add_wrong_result", methods=['POST'])
+def add_wrong_result():
+    add = set(request.form['add_wrong_num'].split())
+    correct = str(DB.get_correct(session['id']))
+    if correct:
+        correct = set(correct.split())
+    else:
+        correct = set({})
+    wrong = str(DB.get_wrong(session['id']))
+    if wrong:
+        wrong = set(wrong.split())
+    else:
+        wrong = set({})
+    wrong = wrong.union(add)
+    correct = correct.difference(wrong)
+    new_correct = " ".join(correct)
+    new_wrong = " ".join(wrong)
+    DB.init_quiz(session['id'], new_correct, new_wrong)
+    return redirect(url_for('add_quiz'))
+
 # 맞은 문제 초기화 정보 넘기기
 @application.route("/init_correct_result", methods=['POST'])
 def init_correct_result():
@@ -67,12 +109,12 @@ def init_correct_result():
     if data:
         wrong = set(data.split())
     else:
-        wrong = {}
+        wrong = set({})
     wrong = wrong.difference(correct)
     new_correct = " ".join(correct)
     new_wrong = " ".join(wrong)
     DB.init_quiz(session['id'], new_correct, new_wrong)
-    return render_template("add_quiz.html")
+    return redirect(url_for('add_quiz'))
 
 # 틀린 문제 초기화 정보 넘기기
 @application.route("/init_wrong_result", methods=['POST'])
@@ -82,12 +124,12 @@ def init_wrong_result():
     if data:
         correct = set(data.split())
     else:
-        correct = {}
+        correct = set({})
     correct = correct.difference(wrong)
     new_correct = " ".join(correct)
     new_wrong = " ".join(wrong)
     DB.init_quiz(session['id'], new_correct, new_wrong)
-    return render_template("add_quiz.html")
+    return redirect(url_for('add_quiz'))
 
 # 문제 뽑기 페이지
 @application.route('/result', methods=['POST'])

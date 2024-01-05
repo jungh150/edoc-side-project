@@ -9,14 +9,14 @@
   {% block section %}
   <center>
   <h3>푼 문제 추가</h3>
-  <form action="#" method="post">
+  <form action="/add_correct_result" method="post">
     <label for="add_correct_num">맞춘 문제</label>
     <br>
     <input type="text" id="add_correct_num" name="add_correct_num" style="width: 50px;">
     번 <button type="submit">등록</button>
   </form>
 
-  <form action="#" method="post">
+  <form action="/add_wrong_result" method="post">
     <label for="add_wrong_num">틀린 문제</label>
     <br>
     <input type="text" id="add_wrong_num" name="add_wrong_num" style="width: 50px;">

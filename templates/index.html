@@ -16,13 +16,13 @@
 
     <ul class="navbar__menu">
       <li><a href="/add_quiz">문제 추가</a></li>
-      <li><a href="#">문제 뽑기</a></li>
-      <li><a href="#">문제 관리</a></li>
+      <li><a href="">문제 뽑기</a></li>
+      <li><a href="">문제 관리</a></li>
     </ul>
 
     <ul class="navbar__login">
       {% if session['id'] %}
-      <li><a href="#">{{session['id']}}님</a></li>
+      <li><a href="">{{session['id']}}님</a></li>
       <li><a href="/logout">로그아웃</a></li>
       {% else %}
       <li><a href="/login">로그인</a></li>
