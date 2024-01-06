@@ -1,0 +1,50 @@
+<head>
+
+</head>
+
+<body>
+  <!-- index.html로부터 확장 -->
+  {% extends "index.html" %}
+
+  {% block section %}
+  <center>
+  <h3>푼 문제 추가</h3>
+  <form action="/add_correct_result" method="post">
+    <label for="add_correct_num">맞춘 문제</label>
+    <br>
+    <input type="text" id="add_correct_num" name="add_correct_num" style="width: 50px;">
+    번 <button type="submit">등록</button>
+  </form>
+
+  <form action="/add_wrong_result" method="post">
+    <label for="add_wrong_num">틀린 문제</label>
+    <br>
+    <input type="text" id="add_wrong_num" name="add_wrong_num" style="width: 50px;">
+    번 <button type="submit">등록</button>
+  </form>
+  </center>
+
+  <br><hr>
+  
+  <center>
+  <h3>푼 문제 초기화</h3>
+  <form action="/init_correct_result" method="post">
+    <label for="correct_numbers"><b>맞춘 문제 입력</b></label>
+    <br>
+    <textarea id="correct_numbers" name="correct_numbers" style="width:300px;height:100px;font-size:px;" required></textarea>
+    <br><br>
+    <button type="submit" style="width:100px;height:px;font-size:20px;" >초기화</button>
+  </form>
+
+  <br>
+
+  <form action="/init_wrong_result" method="post">
+    <label for="wrong_numbers"><b>틀린 문제 입력</b></label>
+    <br>
+    <textarea id="wrong_numbers" name="wrong_numbers" style="width:300px;height:100px;font-size:px;" required></textarea>
+    <br><br>
+    <button type="submit" style="width:100px;height:px;font-size:20px;" >초기화</button>
+  </form>
+  </center>
+  {% endblock section %}
+</body> 

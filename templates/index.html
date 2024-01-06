@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/style.css">
+  <title>Random Number Picker</title>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="naverbar_logo">
+      <a href=""><b>백준 문제 복습</b></a>
+    </div>
+
+    <ul class="navbar__menu">
+      <li><a href="/add_quiz">문제 추가</a></li>
+      <li><a href="">문제 뽑기</a></li>
+      <li><a href="">문제 관리</a></li>
+    </ul>
+
+    <ul class="navbar__login">
+      {% if session['id'] %}
+      <li><a href="">{{session['id']}}님</a></li>
+      <li><a href="/logout">로그아웃</a></li>
+      {% else %}
+      <li><a href="/login">로그인</a></li>
+      <li><a href="/signup">회원가입</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  <section>
+    {% block section %}
+
+    {% endblock section %}
+  </section>
+</body>
+</html>

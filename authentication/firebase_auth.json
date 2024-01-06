@@ -1,0 +1,9 @@
+{
+    "apiKey": "AIzaSyAkAWu4B0dxAW8gzby7olzrkaL82ZIPOQE",
+    "authDomain": "edoc-side-project.firebaseapp.com",
+    "databaseURL": "https://edoc-side-project-default-rtdb.firebaseio.com",
+    "projectId": "edoc-side-project",
+    "storageBucket": "edoc-side-project.appspot.com",
+    "messagingSenderId": "914001485103",
+    "appId": "1:914001485103:web:bc2b1e58e62a0e902155da"
+  }
