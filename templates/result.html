@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Random Number Picker</title>
+</head>
+
+
+<body>
+  <!-- index.html로부터 확장 -->
+  {% extends "index.html" %}
+
+  {% block section %}
+    <center>
+    <h3>1. 맞은 문제 중 복습 할 문제 번호:</h3>
+    <p>{{ selected_correctNumber }}</p>
+
+    <br>
+
+    <h3>2. 틀린 문제 중 복습 할 문제 번호:</h3>
+    <p>{{ selected_wrongNumber }}</p>
+
+    <br>
+
+    <h3>3. 전체 문제 중 복습 할 문제 번호:</h3>
+    <p>{{ selected_total_number }}</p>
+
+    <br><br>
+    <a href="/">돌아가기</a>
+    </center>
+    {% endblock section %}
+</body>
+</html>

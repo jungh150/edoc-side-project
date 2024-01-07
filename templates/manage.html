@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Random Number Picker</title>
+</head>
+
+
+<body>
+  <!-- index.html로부터 확장 -->
+  {% extends "index.html" %}
+
+  {% block section %}
+    <center>
+    <h3>현재 등록된 맞은 문제</h3>
+    <span style="color: green;">{{ correct }}</span>
+
+    <br>
+
+    <h3>현재 등록된 틀린 문제</h3>
+    <p style="color: red;">{{ wrong }}</p>
+
+    <br>
+    <br>
+    <a href="/">돌아가기</a>
+    </center>
+    {% endblock section %}
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/style.css">
+  <title>Random Number Picker</title>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="naverbar_logo">
+      <a href="/"><b>백준 문제 복습</b></a>
+    </div>
+
+    <ul class="navbar__menu">
+      <li><a href="/add_quiz">문제 추가</a></li>
+      <li><a href="/result">문제 뽑기</a></li>
+      <li><a href="/manage">문제 관리</a></li>
+    </ul>
+
+    <ul class="navbar__login">
+      {% if session['id'] %}
+      <li><a href="">{{session['id']}}님</a></li>
+      <li><a href="/logout">로그아웃</a></li>
+      {% else %}
+      <li><a href="/login">로그인</a></li>
+      <li><a href="/signup">회원가입</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  <section>
+    {% block section %}
+    <center>
+    <img src="https://storage.googleapis.com/twg-content/original_images/1854_Hero__zVPykv4.png" 
+    alt="PS" style="max-width:70%; height:auto;">
+    <img src="https://cdn.discordapp.com/attachments/879706864894504971/1193461867910287441/dff87924a69e88b8.png?ex=65acccfa&is=659a57fa&hm=18b45c409bf72fc4ab16918d24304088ed4f217a9e9b0742c973236b33cecd3b&"
+    style="max-width:100%; height:auto;">
+    </center>
+    {% endblock section %}
+  </section>
+    <!-- 푸터 포함 -->
+    {% include 'footer.html' %}
+</body>
+</html>
