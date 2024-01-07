@@ -14,20 +14,16 @@
 
   {% block section %}
     <center>
-    <h3>1. 맞은 문제 중 복습 할 문제 번호:</h3>
-    <p>{{ selected_correctNumber }}</p>
+    <h3>현재 등록된 맞은 문제</h3>
+    <p>{{ correct }}</p>
 
     <br>
 
-    <h3>2. 틀린 문제 중 복습 할 문제 번호:</h3>
-    <p>{{ selected_wrongNumber }}</p>
+    <h3>현재 등록된 틀린 문제</h3>
+    <p>{{ wrong }}</p>
 
     <br>
-
-    <h3>3. 전체 문제 중 복습 할 문제 번호:</h3>
-    <p>{{ selected_total_number }}</p>
-
-    <br><br>
+    <br>
     <a href="/">돌아가기</a>
     </center>
     {% endblock section %}

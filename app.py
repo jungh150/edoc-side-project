@@ -132,26 +132,34 @@ def init_wrong_result():
     return redirect(url_for('add_quiz'))
 
 # 문제 뽑기 페이지
-@application.route('/result', methods=['POST'])
+@application.route('/result')
 def result():
-    correct_numbers = request.form['correct_numbers']
-    correct_numbers_list = [int(num) for num in correct_numbers.split()]
+    
+    correct = str(DB.get_correct(session['id']))
+    correct = correct.split()
+    wrong = str(DB.get_wrong(session['id']))
+    wrong = wrong.split()
 
-    wrong_numbers = request.form['wrong_numbers']
-    wrong_numbers_list = [int(num) for num in wrong_numbers.split()]
+    total = correct + wrong
 
-    total_numbers_list = wrong_numbers_list + correct_numbers_list
-
-    if not correct_numbers_list:
+    if not correct:
         return "맞은 문제 번호를 입력하세요."
     
-    if not wrong_numbers_list:
+    if not wrong:
         return "틀린 문제 번호를 입력하세요."
 
-    selected_correct_number = random.choice(correct_numbers_list)
-    selected_wrong_number = random.choice(wrong_numbers_list)
-    selected_total_number = random.choice(total_numbers_list)
+    selected_correct_number = random.choice(correct)
+    selected_wrong_number = random.choice(wrong)
+    selected_total_number = random.choice(total)
     return render_template('result.html', selected_correctNumber=selected_correct_number, selected_wrongNumber=selected_wrong_number, selected_total_number=selected_total_number)
+
+@application.route('/manage')
+def manage():
+
+    correct = str(DB.get_correct(session['id']))
+    wrong = str(DB.get_wrong(session['id']))
+
+    return render_template('manage.html', correct=correct, wrong=wrong)
 
 if __name__ == '__main__':
     application.run(debug=True)
